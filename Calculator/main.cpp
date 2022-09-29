@@ -1,5 +1,5 @@
-#include "mainwindow.h"
-#include "calculator.h"
+#include "MainwindowClass.h"
+#include "CalculatorClass.h"
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
@@ -19,18 +19,23 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     //QString *Answers=new QString();
     //  *Answers="0";
-    MainWindow w;
-    Calculator calcul;
+    MainWindowClass w;
+    CalculatorClass calcul;
     // w.Answer=Answers;
     //calcul.Answer=Answers;
-    QObject::connect(&w,SIGNAL(MakeSumm(QString)),&calcul,SLOT(DoSummury(QString)));
-    QObject::connect(&w,SIGNAL(MakeMinus(QString)),&calcul,SLOT(DoMinus(QString)));
-    QObject::connect(&w,SIGNAL(MakeMultiplication(QString)),&calcul,SLOT(DoMultiplying(QString)));
-    QObject::connect(&w,SIGNAL(MakeDivision(QString)),&calcul,SLOT(DoDivision(QString)));
+    QObject::connect(&w,SIGNAL(MakeSummSingal(QString)),&calcul,SLOT(DoSummurySlot(QString)));
+    QObject::connect(&w,SIGNAL(MakeMinusSignal(QString)),&calcul,SLOT(DoMinusSlot(QString)));
+    QObject::connect(&w,SIGNAL(MakeMultiplicationSignal(QString)),&calcul,SLOT(DoMultiplyingSlot(QString)));
+    QObject::connect(&w,SIGNAL(MakeDivisionSignal(QString)),&calcul,SLOT(DoDivisionSlot(QString)));
 
-    QObject::connect(&w,SIGNAL(DoCalculation(QString)),&calcul,SLOT(DoEquation(QString)));
-    QObject::connect(&calcul,SIGNAL(DidEqution(QString)),&w,SLOT(ShowAnswer(QString)));
-    QObject::connect(&w,SIGNAL(ToClearNumber()),&calcul,SLOT(ClearNumbers()));
+    QObject::connect(&w,SIGNAL(ChangetoSumSignal()),&calcul,SLOT(ChangetosummurySlot()));
+    QObject::connect(&w,SIGNAL(ChangetoMinusSignal()),&calcul,SLOT(ChangetoMinusSlot()));
+    QObject::connect(&w,SIGNAL(ChangetoMultiplicationSignal()),&calcul,SLOT(ChangetoMultiplyingSlot()));
+    QObject::connect(&w,SIGNAL(ChangetoDivisionSignal()),&calcul,SLOT(ChangetoDivisionSlot()));
+
+    QObject::connect(&w,SIGNAL(DoCalculationSignal(QString)),&calcul,SLOT(DoEquationSlot(QString)));
+    QObject::connect(&calcul,SIGNAL(DidEqutionSignal(QString)),&w,SLOT(ShowAnswerSlot(QString)));
+    QObject::connect(&w,SIGNAL(ToClearNumberSignal()),&calcul,SLOT(ClearNumbersSlot()));
 
     w.show();
     //delete(Answers);

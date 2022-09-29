@@ -1,5 +1,5 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef MAINWINDOWCLASS_H
+#define MAINWINDOWCLASS_H
 
 #include <QMainWindow>
 #include <calculation.h>
@@ -8,14 +8,14 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
+class MainWindowClass : public QMainWindow
 {
     Q_OBJECT
 
 public:
 
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    MainWindowClass(QWidget *parent = nullptr);
+    ~MainWindowClass();
     //QString* Answer;
 
 public slots:
@@ -50,15 +50,26 @@ public slots:
 
     void on_pushButton_equals_clicked();
 
-    void ShowAnswer(QString);
+    void ShowAnswerSlot(QString);
 
 signals:
-    void ToClearNumber();
-    void MakeDivision(QString);
-    void MakeMultiplication(QString);
-    void MakeSumm(QString);
-    void MakeMinus(QString);
-    void DoCalculation(QString);
+    void ChangetoSumSignal();
+    void ChangetoMinusSignal();
+    void ChangetoMultiplicationSignal();
+    void ChangetoDivisionSignal();
+
+
+
+    void ToClearNumberSignal();
+
+
+
+    void MakeSummSingal(QString);
+    void MakeMinusSignal(QString);
+    void MakeMultiplicationSignal(QString);
+    void MakeDivisionSignal(QString);
+
+    void DoCalculationSignal(QString);
 
 private slots:
     void on_pushButton_mines_clicked();
@@ -66,9 +77,11 @@ private slots:
     void on_pushButton_multiplay_clicked();
 
 private:
-    void Cl();
-    void add_number_on_line(QString digit);
-    bool IsNumberExist=false;
+
+    void AddNumberonlineFunction(QString digit);
+
+    bool mIsNumberExistVariable=false;
+
     Ui::MainWindow *ui;
 };
-#endif // MAINWINDOW_H
+#endif // MAINWINDOWCLASS_H

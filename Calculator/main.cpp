@@ -1,5 +1,5 @@
-#include "MainwindowClass.h"
-#include "CalculatorClass.h"
+#include "Mainwindow.h"
+#include "Calculator.h"
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
@@ -19,8 +19,8 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     //QString *Answers=new QString();
     //  *Answers="0";
-    MainWindowClass w;
-    CalculatorClass calcul;
+    MainWindow w;
+    Calculator calcul;
     // w.Answer=Answers;
     //calcul.Answer=Answers;
     QObject::connect(&w,SIGNAL(MakeSummSingal(QString)),&calcul,SLOT(DoSummurySlot(QString)));
@@ -38,6 +38,6 @@ int main(int argc, char *argv[])
     QObject::connect(&w,SIGNAL(ToClearNumberSignal()),&calcul,SLOT(ClearNumbersSlot()));
 
     w.show();
-    //delete(Answers);
+
     return a.exec();
 }

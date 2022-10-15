@@ -1,27 +1,29 @@
-#ifndef MAINWINDOWCLASS_H
-#define MAINWINDOWCLASS_H
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <calculation.h>
+#include "Calculator.h"
+#include <QSignalMapper>
+//#include <calculation.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class MainWindowClass : public QMainWindow
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
 
-    MainWindowClass(QWidget *parent = nullptr);
-    ~MainWindowClass();
+    MainWindow(QWidget *parent = nullptr);
+    ~MainWindow();
     //QString* Answer;
 
 public slots:
 
 
-    void on_pushButton_8_clicked();
+    /*void on_pushButton_8_clicked();
 
     void on_pushButton_7_clicked();
 
@@ -39,7 +41,7 @@ public slots:
 
     void on_pushButton_1_clicked();
 
-    void on_pushButton_0_clicked();
+    void on_pushButton_0_clicked();*/
 
     void on_pushButton_clear_clicked();
 
@@ -49,7 +51,7 @@ public slots:
     void on_pushButton_plus_clicked();
 
     void on_pushButton_equals_clicked();
-
+    void AddNumbersSlot(const QString&);
     void ShowAnswerSlot(QString);
 
 signals:
@@ -78,10 +80,8 @@ private slots:
 
 private:
 
-    void AddNumberonlineFunction(QString digit);
-
     bool mIsNumberExistVariable=false;
 
     Ui::MainWindow *ui;
 };
-#endif // MAINWINDOWCLASS_H
+#endif // MAINWINDOW_H

@@ -9,16 +9,16 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    CalculatorClass.cpp \
-    MainwindowClass.cpp \
+    Calculator.cpp \
+    Mainwindow.cpp \
     main.cpp
 
 HEADERS += \
-    CalculatorClass.h \
-    MainwindowClass.h
+    Calculator.h \
+    Mainwindow.h
 
 FORMS += \
-    MainwindowClass.ui
+    Mainwindow.ui
 
 TRANSLATIONS += \
     Calculator_ru_RU.ts

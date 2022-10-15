@@ -1,22 +1,22 @@
-#ifndef CALCULATORCLASS_H
-#define CALCULATORCLASS_H
+#ifndef CALCULATOR_H
+#define CALCULATOR_H
 
 #include <QObject>
 
-class CalculatorClass : public QObject
+class Calculator : public QObject
 {
     Q_OBJECT
 public:
-    explicit CalculatorClass(QObject *parent = nullptr);
+    explicit Calculator(QObject *parent = nullptr);
 
  //   QString *Answer;
 
 
 
-    double static MultiplyingFunction(double first, double second);
-    double static DividFunction(double first,double second);
-    double static MinusFunction(double first, double second);
-    double static SummaryFunction(double first,double secnd);
+    double static Multiplying(double first, double second);
+    double static Divid(double first,double second);
+    double static Minus(double first, double second);
+    double static Summary(double first,double secnd);
 
 signals:
     void DidEqutionSignal(QString string);
@@ -39,8 +39,8 @@ private:
     double mSecondNumberVariable;
     bool mIsFirstOperationVariable=true;
 
-    void DoMathOperationFunction(double(*MathOperation)(double first,double second),QString number);
-    void CalculateAndswerFunction();
+    void DoMathOperation(double(*MathOperation)(double first,double second),QString number);
+    void CalculateAndswer();
 };
 
-#endif // CALCULATORCLASS_H
+#endif // CALCULATOR_H

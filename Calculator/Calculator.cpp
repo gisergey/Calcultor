@@ -32,16 +32,16 @@ void Calculator::ClearNumbersSlot(){
     mFirstNumberVariable=0;
     mIsFirstOperationVariable=true;
 }
-void  Calculator::DoSummurySlot(QString number){
+void  Calculator::doSummurySlot(QString number){
    DoMathOperation(Summary,number);
 }
-void Calculator::DoDivisionSlot(QString number){
+void Calculator::doDivisionSlot(QString number){
     DoMathOperation(Divid,number);
 }
-void Calculator::DoMinusSlot(QString number){
+void Calculator::doMinusSlot(QString number){
     DoMathOperation(Minus,number);
 }
-void Calculator::DoMultiplyingSlot(QString number){
+void Calculator::doMultiplyingSlot(QString number){
     DoMathOperation(Multiplying,number);
 
 }
@@ -58,7 +58,7 @@ void Calculator::ChangetoDivisionSlot(){
     mOperationChooseVariable=Divid;
 }
 
-void Calculator::DoEquationSlot(QString string){
+void Calculator::doEquationSlot(QString string){
     //отправляет посчитанный ответ в форму
     if(!mIsFirstOperationVariable){
     mFirstNumberVariable=mOperationChooseVariable(mFirstNumberVariable,string.toDouble());

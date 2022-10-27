@@ -4,6 +4,12 @@
 #include <QMainWindow>
 #include "Calculator.h"
 #include <QSignalMapper>
+#include <QTcpSocket>
+#include <QLineEdit>
+#include <QTime>
+#include <QDataStream>
+#include <QMessageBox>
+#include <QTimeEdit>
 //#include <calculation.h>
 
 QT_BEGIN_NAMESPACE
@@ -15,7 +21,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-
+    MainWindow(const QString& strHost,int nPort,QWidget *parent=nullptr);
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     //QString* Answer;
@@ -23,34 +29,15 @@ public:
 public slots:
 
 
-    /*void on_pushButton_8_clicked();
+    void SentToServerSlot(QString);
+    void toClearNumberClickSlot();
+    void toDivisionNumberClickSlot();
 
-    void on_pushButton_7_clicked();
+    void toPlusNumberClickSlot();
+    void toMinusNumberClickSlot();
+    void toMultiplyNumberClickSlot();
+    void toEqualNumberClickSlot();
 
-    void on_pushButton_4_clicked();
-
-    void on_pushButton_9_clicked();
-
-    void on_pushButton_5_clicked();
-
-    void on_pushButton_6_clicked();
-
-    void on_pushButton_3_clicked();
-
-    void on_pushButton_2_clicked();
-
-    void on_pushButton_1_clicked();
-
-    void on_pushButton_0_clicked();*/
-
-    void on_pushButton_clear_clicked();
-
-
-    void on_pushButton_division_clicked();
-
-    void on_pushButton_plus_clicked();
-
-    void on_pushButton_equals_clicked();
     void AddNumbersSlot(const QString&);
     void ShowAnswerSlot(QString);
 
@@ -74,13 +61,16 @@ signals:
     void DoCalculationSignal(QString);
 
 private slots:
-    void on_pushButton_mines_clicked();
+    void ReadyReadSlot   (                            );
+    void ErrorSlot       (QAbstractSocket::SocketError);
 
-    void on_pushButton_multiplay_clicked();
-
+   // void ConnectedSlot(                      );
 private:
-
+    QTcpSocket* mpTcpSocket;
+    quint16 mnNextBlockSize;
     bool mIsNumberExistVariable=false;
+    //bool mIsFirstTime=true;
+    //QTime mStartTime;
 
     Ui::MainWindow *ui;
 };

@@ -26,12 +26,12 @@ public slots:
     void ChangetoMultiplyingSlot();
     void ChangetoDivisionSlot();
 
-    void DoMultiplyingSlot(QString string);
-    void DoSummurySlot(QString string);
-    void DoMinusSlot(QString string);
-    void DoDivisionSlot(QString string);
+    void doMultiplyingSlot(QString string);
+    void doSummurySlot(QString string);
+    void doMinusSlot(QString string);
+    void doDivisionSlot(QString string);
 
-    void DoEquationSlot(QString string);
+    void doEquationSlot(QString string);
     void ClearNumbersSlot();
 private:
     double(*mOperationChooseVariable)(double first,double second);
